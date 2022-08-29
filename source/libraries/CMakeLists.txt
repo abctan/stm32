@@ -6,7 +6,7 @@ target_include_directories(cmsis INTERFACE
     $<BUILD_INTERFACE:${CMSIS_PATH}/Device/ST/STM32F1xx/Include>)
 
 
-  set(STM32F1_HAL_SRC
+set(STM32F1_HAL_SRC
     ${STM32HAL_PATH}/Src/stm32f1xx_hal.c
     ${STM32HAL_PATH}/Src/stm32f1xx_hal_adc.c
     ${STM32HAL_PATH}/Src/stm32f1xx_hal_adc_ex.c
@@ -72,9 +72,9 @@ set(STM32F1_LL_SRC
 )
 
 if(USE_HAL_LIB)
-set(STM32F1_LIB_SRC ${STM32F1_HAL_SRC} ${STM32F1_LL_SRC})
+    set(STM32F1_LIB_SRC ${STM32F1_HAL_SRC} ${STM32F1_LL_SRC})
 else()
-set(STM32F1_LIB_SRC ${STM32F1_LL_SRC})
+    set(STM32F1_LIB_SRC ${STM32F1_LL_SRC})
 endif()
 
 add_library(stm32f1xx_hal ${STM32F1_LIB_SRC})
@@ -88,4 +88,5 @@ target_link_libraries(stm32f1xx_hal PUBLIC cmsis)
 target_include_directories(stm32f1xx_hal PUBLIC
     $<BUILD_INTERFACE:${STM32HAL_PATH}/Inc>
     ${HAL_CONF_PATH}
-    PRIVATE Src)
+    PRIVATE Src
+)
