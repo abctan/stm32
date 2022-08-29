@@ -87,4 +87,5 @@ endif()
 target_link_libraries(stm32f1xx_hal PUBLIC cmsis)
 target_include_directories(stm32f1xx_hal PUBLIC
     $<BUILD_INTERFACE:${STM32HAL_PATH}/Inc>
+    ${HAL_CONF_PATH}
     PRIVATE Src)
