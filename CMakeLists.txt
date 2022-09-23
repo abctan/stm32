@@ -26,16 +26,20 @@ add_subdirectory(source)
 
 include_directories(
     ${STM32_CMAKE_DIR}/source/app/main
-    ${STM32_CMAKE_DIR}/source/app/conf
+    ${STM32_CMAKE_DIR}/source/driver/sys
+    ${STM32_CMAKE_DIR}/source/driver/delay
+    ${STM32_CMAKE_DIR}/source/driver/led
+    ${STM32_CMAKE_DIR}/source/driver/usart
 )
 # STM32CubeMX generated source files
 set(CUBEMX_SRC
     ${STM32_CMAKE_DIR}/source/app/main/main.c
 )
 add_executable(${ELF_TARGET} ${CUBEMX_SRC})
-target_compile_definitions(${ELF_TARGET} PUBLIC -D${MCU_FAMILY})
-target_link_libraries(${ELF_TARGET} PUBLIC cmsis stm32f1xx_hal -lc -lm -lnosys
-                                    boot player
+#target_compile_definitions(${ELF_TARGET} PUBLIC -D${MCU_FAMILY})
+target_link_libraries(${ELF_TARGET} PUBLIC  -lc -lm -lnosys
+    cmsis stm32f1xx_hal boot player
+    led
 )
 target_link_libraries(${ELF_TARGET} PRIVATE -T${LINKER_SCRIPT} ${EXTRA_LINK_FLAGS})
 
