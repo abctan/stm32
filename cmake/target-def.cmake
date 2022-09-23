@@ -14,11 +14,11 @@ set(FLOAT_ABI "")
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/source/boot/STM32F103XE_FLASH.ld)
 set(PROJ_LIB_PATH ${CMAKE_SOURCE_DIR}/source/libraries)
-set(HAL_CONF_PATH ${CMAKE_SOURCE_DIR}/source/app/conf)
+set(HAL_CONF_PATH ${CMAKE_SOURCE_DIR}/source/app/main)
 
-option(USE_LL_LIB  "Enable LL library" ON)
-option(USE_HAL_LIB "Enable HAL library" ON)
-
+option(USE_LL_LIB      "Enable LL library" ON)
+option(USE_HAL_LIB     "Enable HAL library" ON)
+option(USE_HAL_LEGACY  "Enable LEGACY library" ON)
 option(USE_SYSTEM_VIEW "Enable Segger SystemView library" OFF)
 
 # 可执行文件输出目录
