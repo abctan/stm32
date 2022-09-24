@@ -22,6 +22,7 @@ include_directories(
     ${STM32HAL_PATH}/Inc
     ${STM32_CMAKE_DIR}/source/app/main
     ${STM32_CMAKE_DIR}/source/driver/led
+    ${STM32_CMAKE_DIR}/source/driver/key
 )
 # STM32CubeMX generated source files
 set(CUBEMX_SRC
@@ -32,7 +33,7 @@ set(CUBEMX_SRC
 
 add_executable(${ELF_TARGET} ${CUBEMX_SRC})
 target_link_libraries(${ELF_TARGET} PUBLIC
-    boot stm32f1xx_hal player led
+    boot stm32f1xx_hal player led key
 )
 target_link_libraries(${ELF_TARGET} PRIVATE -T${LINKER_SCRIPT} ${EXTRA_LINK_FLAGS})
 

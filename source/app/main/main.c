@@ -1,5 +1,6 @@
 #include "main.h"
 #include "led.h"
+#include "key.h"
 
 void SystemClock_Config(void)
 {
@@ -41,7 +42,9 @@ int main(void)
     SystemClock_Config();
 
     LED_init();
+    KEY_init();
 
+    /*
     while (1) {
         LED0_SetStatus(LED_OPEN);
         LED1_SetStatus(LED_CLOSE);
@@ -50,6 +53,17 @@ int main(void)
         LED1_SetStatus(LED_OPEN);
         HAL_Delay(1000);
     }
+    */
+   while (1) {
+        if (KEY0_GetStatus() == KEY_STATE_DOWN) {
+            LED0_SetStatus(LED_OPEN);
+            LED1_SetStatus(LED_OPEN);
+        } else {
+            LED0_SetStatus(LED_CLOSE);
+            LED1_SetStatus(LED_CLOSE);
+        }
+   }
+
 
     return 0;
 }
