@@ -33,31 +33,22 @@ void SystemClock_Config(void)
   }
 }
 
-void delay_us(uint16_t t)
-{
 
-uint16_t i =0;
-
-for(i=0; i<t; ++i){}
-
-}
 
 int main(void)
 {
     HAL_Init();
-    // SystemClock_Config();
+    SystemClock_Config();
 
     LED_init();
 
     while (1) {
         LED0_SetStatus(LED_OPEN);
         LED1_SetStatus(LED_CLOSE);
-        //HAL_Delay(100);
-        delay_us(1500);
+        HAL_Delay(1000);
         LED0_SetStatus(LED_CLOSE);
         LED1_SetStatus(LED_OPEN);
-        //HAL_Delay(100);
-        delay_us(1500);
+        HAL_Delay(1000);
     }
 
     return 0;
