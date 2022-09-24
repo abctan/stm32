@@ -40,14 +40,12 @@ compile_project()
 
     if [[ ${para_opt1} = ${bulid_opt[0]} ]]
     then
-        if [[ -d "./build" && -e "./build/Makefile" ]]
+        if [[ -d "./build" ]]
         then
             cd ./build
-            make clean
+            rm -rf *
             cd ..
             echo "clean project ok!"
-        else
-            echo "not find Makefile!"
         fi
     fi
     if [[ ${para_opt1} = ${bulid_opt[1]} || ${para_opt2} = ${bulid_opt[1]} ]]
